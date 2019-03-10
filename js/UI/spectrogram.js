@@ -54,18 +54,18 @@ var spec3D = {
     this.player = new Player();
     this.analyserNode = this.player.getAnalyserNode();
     this.canvas = canvas;
-    this.onResize_();
+    this.resize_();
 
     this.analyserView = new AnalyserView(this.canvas);
     this.analyserView.setAnalyserNode(this.analyserNode);
     this.analyserView.initByteBuffer();
 
-    window.addEventListener('resize', this.onResize_.bind(this));
+    window.addEventListener('resize', this.resize_.bind(this));
 
     console.log('spectrogram-3d initialized');
   },
 
-  onResize_: function() {
+  resize_: function() {
     console.log('onResize_');
     this.canvas.width = $(window).width();
     this.canvas.height = $(window).height();

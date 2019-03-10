@@ -1130,7 +1130,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_ecaba6a2.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_600d8699.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************
@@ -1391,18 +1391,18 @@ var spec3D = {
     this.player = new Player();
     this.analyserNode = this.player.getAnalyserNode();
     this.canvas = canvas;
-    this.onResize_();
+    this.resize_();
 
     this.analyserView = new AnalyserView(this.canvas);
     this.analyserView.setAnalyserNode(this.analyserNode);
     this.analyserView.initByteBuffer();
 
-    window.addEventListener('resize', this.onResize_.bind(this));
+    window.addEventListener('resize', this.resize_.bind(this));
 
     console.log('spectrogram-3d initialized');
   },
 
-  onResize_: function() {
+  resize_: function() {
     console.log('onResize_');
     this.canvas.width = $(window).width();
     this.canvas.height = $(window).height();
