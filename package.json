@@ -1,0 +1,11 @@
+{
+  "version": "0.0.0",
+  "author": "Tiffany Conroy",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.4.3",
+    "gulp-r": "^1.1.2",
+    "gulp-webserver": "^0.9.0"
+  }
+}
