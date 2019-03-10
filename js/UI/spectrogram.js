@@ -21,32 +21,32 @@ var AnalyserView = require('../3D/visualizer');
 
 var spec3D = {
   stop: function() {
-    spec3D.player.stop();
+    this.player.stop();
   },
 
   stopRender: function() {
-    spec3D.isRendering = false;
+    this.isRendering = false;
   },
 
   startRender: function() {
-    if (spec3D.isRendering) {
+    if (this.isRendering) {
       return;
     }
-    spec3D.isRendering = true;
-    spec3D.draw_();
+    this.isRendering = true;
+    this.draw_();
   },
 
   loopChanged: function(loop) {
-    spec3D.player.setLoop(loop);
+    this.player.setLoop(loop);
   },
 
   play: function(src) {
-    spec3D.src = src;
-    spec3D.player.playSrc(src);
+    this.src = src;
+    this.player.playSrc(src);
   },
 
   live: function() {
-    spec3D.player.live();
+    this.player.live();
   },
 
   init: function(canvas) {
@@ -54,15 +54,15 @@ var spec3D = {
     var player = new Player();
     var analyserNode = player.getAnalyserNode();
 
-    spec3D.canvas = canvas;
-    spec3D.onResize_();
+    this.canvas = canvas;
+    this.onResize_();
 
     var analyserView = new AnalyserView(this.canvas);
     analyserView.setAnalyserNode(analyserNode);
     analyserView.initByteBuffer();
 
-    spec3D.player = player;
-    spec3D.analyserView = analyserView;
+    this.player = player;
+    this.analyserView = analyserView;
 
     window.addEventListener('resize', function () {
       spec3D.onResize();
@@ -78,13 +78,13 @@ var spec3D = {
   },
 
   draw_: function() {
-    if (!spec3D.isRendering) {
+    if (!this.isRendering) {
       console.log('stopped draw_');
       return;
     }
 
-    spec3D.analyserView.doFrequencyAnalysis();
-    requestAnimationFrame(spec3D.draw_.bind(spec3D));
+    this.analyserView.doFrequencyAnalysis();
+    requestAnimationFrame(this.draw_.bind(this));
   }
 };
 
