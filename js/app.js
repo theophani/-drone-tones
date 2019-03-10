@@ -1132,7 +1132,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_2188b89a.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_97bd1b4d.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************
@@ -1372,68 +1372,6 @@ var AnalyserView = require('../3D/visualizer');
 
 
 var spec3D = {
-  cxRot: 90,
-  drawingMode: false,
-  prevX: 0,
-  handleTrack: function(e) {
-    switch(e.type){
-      case 'mousedown':
-      case 'touchstart':
-        // START: MOUSEDOWN ---------------------------------------------
-        spec3D.prevX = Number(e.pageX) || Number(e.originalEvent.touches[0].pageX)
-        $(e.currentTarget).on('mousemove',spec3D.handleTrack)
-        $(e.currentTarget).on('touchmove',spec3D.handleTrack)
-
-        if (spec3D.drawingMode == false) return false
-        var freq = spec3D.yToFreq(Number(e.pageY) || Number(e.originalEvent.touches[0].pageY));
-
-        if (spec3D.isPlaying()) spec3D.player.setBandpassFrequency(freq);
-        else spec3D.player.playTone(freq);
-        return false;
-        break;
-      case 'mousemove' :
-      case 'touchmove' :
-        // TRACK --------------------------------------------------------
-        var ddx = (Number(e.pageX) || Number(e.originalEvent.touches[0].pageX)) - spec3D.prevX;
-        spec3D.prevX = Number(e.pageX) || Number(e.originalEvent.touches[0].pageX)
-
-        if(spec3D.drawingMode){
-
-          var y = Number(e.pageY) || Number(e.originalEvent.touches[0].pageY);
-          var freq = spec3D.yToFreq(y);
-          // console.log('%f px maps to %f Hz', y, freq);
-
-          if (spec3D.isPlaying()) spec3D.player.setBandpassFrequency(freq);
-          else spec3D.player.playTone(freq);
-
-        } else if (spec3D.isPlaying()) {
-
-          spec3D.cxRot += (ddx * .2)
-
-          if (spec3D.cxRot < 0) spec3D.cxRot = 0;
-          else if ( spec3D.cxRot > 90) spec3D.cxRot = 90;
-
-          // spec3D.analyserView.cameraController.yRot = spec3D.easeInOutCubic(spec3D.cxRot / 90, 180 , 90 , 1);
-          // spec3D.analyserView.cameraController.zT = spec3D.easeInOutCubic(spec3D.cxRot / 90,-2,-1,1);
-          // console.log(spec3D.cxRot / 90);
-          // spec3D.analyserView.cameraController.zT = -6 + ((spec3D.cxRot / 90) * 4);
-        }
-        return false;
-        break;
-      case 'mouseup' :
-      case 'touchend':
-      // END: MOUSEUP -------------------------------------------------
-        $(e.currentTarget).off('mousemove',spec3D.handleTrack)
-        $(e.currentTarget).off('touchmove',spec3D.handleTrack)
-        if (spec3D.drawingMode == false) return false
-
-        if (spec3D.isPlaying()) spec3D.player.setBandpassFrequency(null);
-        else spec3D.player.stopTone();
-        return false;
-        break;
-    }
-  },
-
   attached: function() {
     console.log('spectrogram-3d attached');
     Util.setLogScale(20, 20, 20000, 20000);
@@ -1491,11 +1429,6 @@ var spec3D = {
 
     spec3D.player = player;
     spec3D.analyserView = analyserView;
-    $('#spectrogram')
-      .on('mousedown',this.handleTrack)
-      .on('touchstart',this.handleTrack)
-      .on('mouseup',this.handleTrack)
-      .on('touchend',this.handleTrack)
   },
 
   onResize_: function() {
