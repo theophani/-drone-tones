@@ -68,7 +68,6 @@ $(function(){
         var source = null; // global source for user dropped audio
 
 		getLocalization();
-		window.parent.postMessage('ready','*');
 
 		var sp = spec3D;
 		sp.attached();
@@ -92,7 +91,6 @@ $(function(){
 				if ($(this).attr('data-mic')!== undefined) {
 					if(window.isIOS){
 						// Throw Microphone Error *********************************
-						window.parent.postMessage('error2','*');
 						// Remove Selection ***************************************
 						$(this).removeClass('selected');
 					}else{
@@ -215,7 +213,6 @@ $(function(){
 	var iosOverlay = $('#iosButton');
 
 	if (window.isIOS) {
-		window.parent.postMessage('loaded','*');
 		iosOverlay[0].addEventListener('touchend', function (e) {
 			iosOverlay.addClass('hide');
 			startup();
