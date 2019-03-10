@@ -75,12 +75,13 @@ $(function(){
 		$('#loadingSound').hide();
 
 		var killSound = function () {
-			spec3D.startRender();
 			spec3D.stop();
 			$('.music-box__buttons__button').removeClass('selected');
 		};
 
 		$('.music-box__buttons__button').click(function (e) {
+			spec3D.startRender();
+
 			if ($(this).hasClass('selected')) {
 				// toggle off and stay off
 				killSound();

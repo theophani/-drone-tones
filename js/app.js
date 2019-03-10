@@ -1070,12 +1070,13 @@ $(function(){
 		$('#loadingSound').hide();
 
 		var killSound = function () {
-			spec3D.startRender();
 			spec3D.stop();
 			$('.music-box__buttons__button').removeClass('selected');
 		};
 
 		$('.music-box__buttons__button').click(function (e) {
+			spec3D.startRender();
+
 			if ($(this).hasClass('selected')) {
 				// toggle off and stay off
 				killSound();
@@ -1131,7 +1132,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_864b62d2.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_6f9b645e.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************
