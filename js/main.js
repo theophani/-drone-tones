@@ -71,7 +71,8 @@ $(function(){
 		getLocalization();
 
 		spec3D.attached();
-		$('#loadingSound').hide(0);
+
+		$('#loadingSound').hide();
 
 		$('.music-box__buttons__button').click(function(e){
 			spec3D.startRender();
