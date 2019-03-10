@@ -74,21 +74,27 @@ $(function(){
 
 		$('#loadingSound').hide();
 
-		$('.music-box__buttons__button').click(function (e) {
+		var killSound = function () {
 			spec3D.startRender();
-
-			var wasPlaying = spec3D.isPlaying();
 			spec3D.stop();
 			spec3D.drawingMode = false;
+			$('.music-box__buttons__button').removeClass('selected');
+		};
 
+		$('.music-box__buttons__button').click(function (e) {
 			if ($(this).hasClass('selected')) {
-				$('.music-box__buttons__button').removeClass('selected');
+				// toggle off and stay off
+				killSound();
 			} else {
-				$('.music-box__buttons__button').removeClass('selected');
+				// turn off whatever is playing first
+				killSound();
+
+				// the start playing the selection
 				$(this).addClass('selected');
+
 				// check for start recoding data instruction **********************
 				if ($(this).attr('data-mic')!== undefined) {
-					if(window.isIOS){
+					if (window.isIOS){
 						// Throw Microphone Error *********************************
 						iosOverlay.removeClass('hide').html(localizedStrings.Error_Message_2.message);
 						// Remove Selection ***************************************
@@ -111,14 +117,6 @@ $(function(){
 				}
 			}
 		})
-
-		var killSound = function () {
-			spec3D.startRender();
-			var wasPlaying = spec3D.isPlaying();
-			spec3D.stop();
-			spec3D.drawingMode = false;
-			$('.music-box__buttons__button').removeClass('selected');
-		};
 
 		window.addEventListener('blur', function () {
 			killSound();
