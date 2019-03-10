@@ -64,9 +64,7 @@ var spec3D = {
     this.player = player;
     this.analyserView = analyserView;
 
-    window.addEventListener('resize', function () {
-      spec3D.onResize_();
-    });
+    window.addEventListener('resize', this.onResize_.bind(this));
 
     console.log('spectrogram-3d initialized');
   },
