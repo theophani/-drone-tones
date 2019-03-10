@@ -1072,7 +1072,6 @@ $(function(){
 		var killSound = function () {
 			spec3D.startRender();
 			spec3D.stop();
-			spec3D.drawingMode = false;
 			$('.music-box__buttons__button').removeClass('selected');
 		};
 
@@ -1087,8 +1086,8 @@ $(function(){
 				// the start playing the selection
 				$(this).addClass('selected');
 
-				// check for start recoding data instruction **********************
-				if ($(this).attr('data-mic')!== undefined) {
+				// Check for start recoding data instruction **********************
+				if ($(this).attr('data-mic') !== undefined) {
 					if (window.isIOS){
 						// Throw Microphone Error *********************************
 						iosOverlay.removeClass('hide').html(localizedStrings.Error_Message_2.message);
@@ -1100,10 +1099,7 @@ $(function(){
 						// Start Recording ****************************************
 						spec3D.live();
 					}
-				// Check for Start drawing data instruction  **********************
-				} else if ($(this).attr('data-draw') !== undefined) {
-					spec3D.drawingMode = true;
-					$('#drawAnywhere').fadeIn().delay(2000).fadeOut();
+
 				// Check for play audio data instruction **************************
 				} else if ($(this).attr('data-src') !== undefined) {
 					spec3D.loopChanged( true );
@@ -1135,7 +1131,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_4a286453.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_864b62d2.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************

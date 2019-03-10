@@ -77,7 +77,6 @@ $(function(){
 		var killSound = function () {
 			spec3D.startRender();
 			spec3D.stop();
-			spec3D.drawingMode = false;
 			$('.music-box__buttons__button').removeClass('selected');
 		};
 
@@ -92,8 +91,8 @@ $(function(){
 				// the start playing the selection
 				$(this).addClass('selected');
 
-				// check for start recoding data instruction **********************
-				if ($(this).attr('data-mic')!== undefined) {
+				// Check for start recoding data instruction **********************
+				if ($(this).attr('data-mic') !== undefined) {
 					if (window.isIOS){
 						// Throw Microphone Error *********************************
 						iosOverlay.removeClass('hide').html(localizedStrings.Error_Message_2.message);
@@ -105,10 +104,7 @@ $(function(){
 						// Start Recording ****************************************
 						spec3D.live();
 					}
-				// Check for Start drawing data instruction  **********************
-				} else if ($(this).attr('data-draw') !== undefined) {
-					spec3D.drawingMode = true;
-					$('#drawAnywhere').fadeIn().delay(2000).fadeOut();
+
 				// Check for play audio data instruction **************************
 				} else if ($(this).attr('data-src') !== undefined) {
 					spec3D.loopChanged( true );
