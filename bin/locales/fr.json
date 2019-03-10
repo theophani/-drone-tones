@@ -2,26 +2,8 @@
   "Spectrogram_UI_Instrament_Flute": {
     "message": "Flûte"
   },
-  "Spectrogram_UI_Instrament_Harp": {
-    "message": "Harpe"
-  },
-  "Spectrogram_UI_Instrament_Whistling": {
-    "message": "Sifflement"
-  },
-  "Spectrogram_UI_Instrament_Trombone": {
-    "message": "Trombone"
-  },
-  "Spectrogram_UI_Instrament_Drum_Machine": {
-    "message": "Boîte à rythmes"
-  },
-  "Spectrogram_UI_Instrament_Birds": {
-    "message": "Oiseaux"
-  },
   "Spectrogram_UI_Instrament_Modem": {
     "message": "Modem"
-  },
-  "Spectrogram_UI_Instrament_Wine_Glass": {
-    "message": "Verre à vin"
   },
   "Error_Message_1": {
     "message": "Petit problème… Désolé pour ce souci technique. Pour une expérience optimale, utilisez Chrome."
