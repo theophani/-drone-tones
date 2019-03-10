@@ -1000,7 +1000,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -1063,25 +1063,22 @@ $(function(){
 	};
 
 	var startup = function () {
-        var source = null; // global source for user dropped audio
-
 		getLocalization();
 
 		spec3D.attached();
-		// --------------------------------------------
-		$('.music-box__tool-tip').hide(0);
-		$('#loadingSound').hide(0);
 
-		$('.music-box__buttons__button').click(function(e){
+		$('#loadingSound').hide();
+
+		$('.music-box__buttons__button').click(function (e) {
 			spec3D.startRender();
 
 			var wasPlaying = spec3D.isPlaying();
 			spec3D.stop();
 			spec3D.drawingMode = false;
 
-			if($(this).hasClass('selected')) {
+			if ($(this).hasClass('selected')) {
 				$('.music-box__buttons__button').removeClass('selected');
-			}else{
+			} else {
 				$('.music-box__buttons__button').removeClass('selected');
 				$(this).addClass('selected');
 				// check for start recoding data instruction **********************
@@ -1091,18 +1088,18 @@ $(function(){
 						iosOverlay.removeClass('hide').html(localizedStrings.Error_Message_2.message);
 						// Remove Selection ***************************************
 						$(this).removeClass('selected');
-					}else{
+					} else {
 						// Show Record Modal Screen *******************************
 						$('#record').fadeIn().delay(2000).fadeOut();
 						// Start Recording ****************************************
 						spec3D.live();
 					}
 				// Check for Start drawing data instruction  **********************
-				}else if ($(this).attr('data-draw') !== undefined) {
+				} else if ($(this).attr('data-draw') !== undefined) {
 					spec3D.drawingMode = true;
 					$('#drawAnywhere').fadeIn().delay(2000).fadeOut();
 				// Check for play audio data instruction **************************
-				}else if ($(this).attr('data-src') !== undefined) {
+				} else if ($(this).attr('data-src') !== undefined) {
 					spec3D.loopChanged( true );
 					$('#loadingMessage').text($(this).attr('data-name'));
 					spec3D.play($(this).attr('data-src'));
@@ -1110,52 +1107,21 @@ $(function(){
 			}
 		})
 
-		var killSound = function(){
+		var killSound = function () {
 			spec3D.startRender();
 			var wasPlaying = spec3D.isPlaying();
 			spec3D.stop();
 			spec3D.drawingMode = false;
 			$('.music-box__buttons__button').removeClass('selected');
-		}
+		};
 
-		window.addEventListener('blur', function() {
-		   killSound();
-		});
-		document.addEventListener('visibilitychange', function(){
-		    killSound();
+		window.addEventListener('blur', function () {
+			killSound();
 		});
 
-        var decodeBuffer = function(file) {
-            // Credit: https://github.com/kylestetz/AudioDrop && https://ericbidelman.tumblr.com/post/13471195250/web-audio-api-how-to-playing-audio-based-on-user
-            var AudioContext = window.AudioContext || window.webkitAudioContext;
-            var context = new AudioContext();
-            // var source = null;
-            var audioBuffer = null;
-            var fileReader = new FileReader();
-
-            fileReader.onload = function(fileEvent) {
-                var data = fileEvent.target.result;
-
-                context.decodeAudioData(data, function(buffer) {
-                    // audioBuffer is global to reuse the decoded audio later.
-                    audioBuffer = buffer;
-                    source = context.createBufferSource();
-                    source.buffer = audioBuffer;
-                    source.loop = true;
-                    source.connect(context.destination);
-
-                    // Visualizer
-                    spec3D.startRender();
-                    spec3D.loopChanged( true );
-                    spec3D.userAudio(source);
-                    $('#loadingSound').delay(500).fadeOut().hide(0);
-                }, function(e) {
-                    console.log('Error decoding file', e);
-                });
-            };
-
-            fileReader.readAsArrayBuffer(file);
-        };
+		document.addEventListener('visibilitychange', function () {
+			killSound();
+		});
 	};
 
 	var iosOverlay = $('#iosButton');
@@ -1171,7 +1137,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_cb9fef81.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_6833fd7a.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************

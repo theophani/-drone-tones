@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -74,16 +74,16 @@ $(function(){
 
 		$('#loadingSound').hide();
 
-		$('.music-box__buttons__button').click(function(e){
+		$('.music-box__buttons__button').click(function (e) {
 			spec3D.startRender();
 
 			var wasPlaying = spec3D.isPlaying();
 			spec3D.stop();
 			spec3D.drawingMode = false;
 
-			if($(this).hasClass('selected')) {
+			if ($(this).hasClass('selected')) {
 				$('.music-box__buttons__button').removeClass('selected');
-			}else{
+			} else {
 				$('.music-box__buttons__button').removeClass('selected');
 				$(this).addClass('selected');
 				// check for start recoding data instruction **********************
@@ -93,18 +93,18 @@ $(function(){
 						iosOverlay.removeClass('hide').html(localizedStrings.Error_Message_2.message);
 						// Remove Selection ***************************************
 						$(this).removeClass('selected');
-					}else{
+					} else {
 						// Show Record Modal Screen *******************************
 						$('#record').fadeIn().delay(2000).fadeOut();
 						// Start Recording ****************************************
 						spec3D.live();
 					}
 				// Check for Start drawing data instruction  **********************
-				}else if ($(this).attr('data-draw') !== undefined) {
+				} else if ($(this).attr('data-draw') !== undefined) {
 					spec3D.drawingMode = true;
 					$('#drawAnywhere').fadeIn().delay(2000).fadeOut();
 				// Check for play audio data instruction **************************
-				}else if ($(this).attr('data-src') !== undefined) {
+				} else if ($(this).attr('data-src') !== undefined) {
 					spec3D.loopChanged( true );
 					$('#loadingMessage').text($(this).attr('data-name'));
 					spec3D.play($(this).attr('data-src'));
@@ -112,19 +112,20 @@ $(function(){
 			}
 		})
 
-		var killSound = function(){
+		var killSound = function () {
 			spec3D.startRender();
 			var wasPlaying = spec3D.isPlaying();
 			spec3D.stop();
 			spec3D.drawingMode = false;
 			$('.music-box__buttons__button').removeClass('selected');
-		}
+		};
 
-		window.addEventListener('blur', function() {
-		   killSound();
+		window.addEventListener('blur', function () {
+			killSound();
 		});
-		document.addEventListener('visibilitychange', function(){
-		    killSound();
+
+		document.addEventListener('visibilitychange', function () {
+			killSound();
 		});
 	};
 
