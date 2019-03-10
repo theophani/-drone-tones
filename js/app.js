@@ -1009,8 +1009,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 *********************************************************/
 
-
-
 'use strict';
 
 window.isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) );
@@ -1132,7 +1130,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_be5a7739.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_b863f436.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************
@@ -1216,18 +1214,6 @@ Player.prototype.playSrc = function(src) {
 		this.playHelper_(src);
 		$('#loadingSound').delay(500).fadeOut(500);
 	}.bind(this));
-};
-
-Player.prototype.playUserAudio = function(src) {
-  // Stop all of the mic stuff.
-  this.filterGain.gain.value = 1;
-  if (this.input) {
-    this.input.disconnect();
-    this.input = null;
-    return;
-  }
-  this.buffers['user'] = src.buffer;
-  this.playHelper_('user');
 };
 
 Player.prototype.playHelper_ = function(src) {
@@ -1367,15 +1353,12 @@ limitations under the License.
 
 'use strict'
 
-var Util = require('../util/util.js');
 var Player = require('../ui/player');
 var AnalyserView = require('../3D/visualizer');
-
 
 var spec3D = {
   attached: function() {
     console.log('spectrogram-3d attached');
-    Util.setLogScale(20, 20, 20000, 20000);
     spec3D.onResize_();
     spec3D.init_();
 
@@ -1384,10 +1367,6 @@ var spec3D = {
 
   stop: function() {
     spec3D.player.stop();
-  },
-
-  isPlaying: function() {
-    return !!this.player.source;
   },
 
   stopRender: function() {
@@ -1413,10 +1392,6 @@ var spec3D = {
 
   live: function() {
     spec3D.player.live();
-  },
-
-  userAudio: function(src) {
-    spec3D.player.playUserAudio(src)
   },
 
   init_: function() {
@@ -1457,7 +1432,7 @@ var spec3D = {
 module.exports = spec3D;
 
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/ui/spectrogram.js","/ui")
-},{"../3D/visualizer":3,"../ui/player":5,"../util/util.js":7,"1YiZ5S":11,"buffer":8}],7:[function(require,module,exports){
+},{"../3D/visualizer":3,"../ui/player":5,"1YiZ5S":11,"buffer":8}],7:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************
 Copyright 2016 Google Inc. All Rights Reserved.

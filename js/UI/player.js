@@ -81,18 +81,6 @@ Player.prototype.playSrc = function(src) {
 	}.bind(this));
 };
 
-Player.prototype.playUserAudio = function(src) {
-  // Stop all of the mic stuff.
-  this.filterGain.gain.value = 1;
-  if (this.input) {
-    this.input.disconnect();
-    this.input = null;
-    return;
-  }
-  this.buffers['user'] = src.buffer;
-  this.playHelper_('user');
-};
-
 Player.prototype.playHelper_ = function(src) {
 	var buffer = this.buffers[src];
 	this.source = this.createSource_(buffer, true);

@@ -16,15 +16,12 @@ limitations under the License.
 
 'use strict'
 
-var Util = require('../util/util.js');
 var Player = require('../ui/player');
 var AnalyserView = require('../3D/visualizer');
-
 
 var spec3D = {
   attached: function() {
     console.log('spectrogram-3d attached');
-    Util.setLogScale(20, 20, 20000, 20000);
     spec3D.onResize_();
     spec3D.init_();
 
@@ -33,10 +30,6 @@ var spec3D = {
 
   stop: function() {
     spec3D.player.stop();
-  },
-
-  isPlaying: function() {
-    return !!this.player.source;
   },
 
   stopRender: function() {
@@ -62,10 +55,6 @@ var spec3D = {
 
   live: function() {
     spec3D.player.live();
-  },
-
-  userAudio: function(src) {
-    spec3D.player.playUserAudio(src)
   },
 
   init_: function() {
