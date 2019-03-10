@@ -1022,21 +1022,21 @@ var spec3D = require('./ui/spectrogram');
 // -~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
 
 $(function(){
-	var parseQueryString = function(){
+	var parseQueryString = function() {
 		var q = window.location.search.slice(1).split('&');
-		for(var i=0; i < q.length; ++i){
+		for (var i=0; i < q.length; ++i) {
 			var qi = q[i].split('=');
 			q[i] = {};
 			q[i][qi[0]] = qi[1];
 		}
 		return q;
-	}
+	};
 
 	var getLocalization = function(){
 		var q = parseQueryString();
 		var lang = 'en';
-		for(var i=0; i < q.length; i++){
-			if(q[i].ln != undefined){
+		for (var i=0; i < q.length; i++) {
+			if (q[i].ln != undefined) {
 				lang = q[i].ln;
 			}
 		}
@@ -1045,20 +1045,19 @@ $(function(){
 			url: url,
 			dataType: "json",
 			async: true,
-			success: function( response ) {
-				$.each(response,function(key,value){
+			success: function (response) {
+				$.each(response, function (key, value) {
 					var item = $("[data-name='"+ key +"']");
-					if(item.length > 0){
-						console.log('value.message',value.message);
-						item.attr('data-name',value.message);
+					if (item.length > 0) {
+						item.attr('data-name', value.message);
 					}
 				});
 			},
-			error: function(err){
+			error: function (err) {
 				console.warn(err);
 			}
 		});
-	}
+	};
 
 	var startup = function (){
         var source = null; // global source for user dropped audio
@@ -1222,7 +1221,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_2d284a8a.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_6af25eff.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************
