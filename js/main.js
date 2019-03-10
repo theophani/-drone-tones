@@ -27,6 +27,8 @@ var spec3D = require('./ui/spectrogram');
 // -~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
 
 $(function(){
+	var localizedStrings = {};
+
 	var parseQueryString = function() {
 		var q = window.location.search.slice(1).split('&');
 		for (var i=0; i < q.length; ++i) {
@@ -51,6 +53,7 @@ $(function(){
 			dataType: "json",
 			async: true,
 			success: function (response) {
+				localizedStrings = response;
 				$.each(response, function (key, value) {
 					var item = $("[data-name='"+ key +"']");
 					if (item.length > 0) {
@@ -91,6 +94,7 @@ $(function(){
 				if ($(this).attr('data-mic')!== undefined) {
 					if(window.isIOS){
 						// Throw Microphone Error *********************************
+						iosOverlay.removeClass('hide').html(localizedStrings.Error_Message_2.message);
 						// Remove Selection ***************************************
 						$(this).removeClass('selected');
 					}else{

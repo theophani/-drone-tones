@@ -1022,6 +1022,8 @@ var spec3D = require('./ui/spectrogram');
 // -~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
 
 $(function(){
+	var localizedStrings = {};
+
 	var parseQueryString = function() {
 		var q = window.location.search.slice(1).split('&');
 		for (var i=0; i < q.length; ++i) {
@@ -1046,6 +1048,7 @@ $(function(){
 			dataType: "json",
 			async: true,
 			success: function (response) {
+				localizedStrings = response;
 				$.each(response, function (key, value) {
 					var item = $("[data-name='"+ key +"']");
 					if (item.length > 0) {
@@ -1063,7 +1066,6 @@ $(function(){
         var source = null; // global source for user dropped audio
 
 		getLocalization();
-		window.parent.postMessage('ready','*');
 
 		var sp = spec3D;
 		sp.attached();
@@ -1087,7 +1089,7 @@ $(function(){
 				if ($(this).attr('data-mic')!== undefined) {
 					if(window.isIOS){
 						// Throw Microphone Error *********************************
-						window.parent.postMessage('error2','*');
+						iosOverlay.removeClass('hide').html(localizedStrings.Error_Message_2.message);
 						// Remove Selection ***************************************
 						$(this).removeClass('selected');
 					}else{
@@ -1210,7 +1212,6 @@ $(function(){
 	var iosOverlay = $('#iosButton');
 
 	if (window.isIOS) {
-		window.parent.postMessage('loaded','*');
 		iosOverlay[0].addEventListener('touchend', function (e) {
 			iosOverlay.addClass('hide');
 			startup();
@@ -1221,7 +1222,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_6a7450bc.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_7e4ff329.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************
@@ -1333,7 +1334,6 @@ Player.prototype.playHelper_ = function(src) {
 
 Player.prototype.live = function() {
 	if(window.isIOS){
-		window.parent.postMessage('error2','*');
 		console.log("cant use mic on ios");
 	}else{
 		if (this.input) {
