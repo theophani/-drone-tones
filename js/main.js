@@ -68,8 +68,6 @@ $(function(){
 	};
 
 	var startup = function () {
-        var source = null; // global source for user dropped audio
-
 		getLocalization();
 
 		spec3D.attached();
@@ -129,38 +127,6 @@ $(function(){
 		document.addEventListener('visibilitychange', function(){
 		    killSound();
 		});
-
-        var decodeBuffer = function(file) {
-            // Credit: https://github.com/kylestetz/AudioDrop && https://ericbidelman.tumblr.com/post/13471195250/web-audio-api-how-to-playing-audio-based-on-user
-            var AudioContext = window.AudioContext || window.webkitAudioContext;
-            var context = new AudioContext();
-            // var source = null;
-            var audioBuffer = null;
-            var fileReader = new FileReader();
-
-            fileReader.onload = function(fileEvent) {
-                var data = fileEvent.target.result;
-
-                context.decodeAudioData(data, function(buffer) {
-                    // audioBuffer is global to reuse the decoded audio later.
-                    audioBuffer = buffer;
-                    source = context.createBufferSource();
-                    source.buffer = audioBuffer;
-                    source.loop = true;
-                    source.connect(context.destination);
-
-                    // Visualizer
-                    spec3D.startRender();
-                    spec3D.loopChanged( true );
-                    spec3D.userAudio(source);
-                    $('#loadingSound').delay(500).fadeOut().hide(0);
-                }, function(e) {
-                    console.log('Error decoding file', e);
-                });
-            };
-
-            fileReader.readAsArrayBuffer(file);
-        };
 	};
 
 	var iosOverlay = $('#iosButton');
