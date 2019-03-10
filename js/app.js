@@ -1017,15 +1017,6 @@ window.isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mi
 window.isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 window.isAndroid = /Android/.test(navigator.userAgent) && !window.MSStream;
 
-window.requestAnimFrame = (function(){
-  return  window.requestAnimationFrame       ||
-		  window.webkitRequestAnimationFrame ||
-		  window.mozRequestAnimationFrame    ||
-		  function( callback ){
-			window.setTimeout(callback, 1000 / 60);
-		  };
-})();
-
 // -~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
 var spec3D = require('./ui/spectrogram');
 // -~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
@@ -1231,7 +1222,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_79e8df06.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_d6d3927.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************

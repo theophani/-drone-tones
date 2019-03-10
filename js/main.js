@@ -22,15 +22,6 @@ window.isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mi
 window.isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 window.isAndroid = /Android/.test(navigator.userAgent) && !window.MSStream;
 
-window.requestAnimFrame = (function(){
-  return  window.requestAnimationFrame       ||
-		  window.webkitRequestAnimationFrame ||
-		  window.mozRequestAnimationFrame    ||
-		  function( callback ){
-			window.setTimeout(callback, 1000 / 60);
-		  };
-})();
-
 // -~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
 var spec3D = require('./ui/spectrogram');
 // -~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
