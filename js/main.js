@@ -45,7 +45,7 @@ $(function(){
 				lang = q[i].ln;
 			}
 		}
-		var url = "https://gweb-musiclab-site.appspot.com/static/locales/" + lang + "/locale-music-lab.json";
+		var url = "/locales/" + lang + ".json";
 		$.ajax({
 			url: url,
 			dataType: "json",
