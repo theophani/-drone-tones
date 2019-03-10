@@ -1040,7 +1040,7 @@ $(function(){
 				lang = q[i].ln;
 			}
 		}
-		var url = "/locales/" + lang + ".json";
+		var url = "/bin/locales/" + lang + ".json";
 		$.ajax({
 			url: url,
 			dataType: "json",
@@ -1222,7 +1222,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_57882f81.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_2d284a8a.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************

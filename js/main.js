@@ -45,7 +45,7 @@ $(function(){
 				lang = q[i].ln;
 			}
 		}
-		var url = "/locales/" + lang + ".json";
+		var url = "/bin/locales/" + lang + ".json";
 		$.ajax({
 			url: url,
 			dataType: "json",
