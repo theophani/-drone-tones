@@ -1063,7 +1063,7 @@ $(function(){
 	var startup = function () {
 		getLocalization();
 
-		spec3D.attached();
+		spec3D.init($('#spectrogram')[0]);
 
 		$('#loadingSound').hide();
 
@@ -1130,7 +1130,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_b863f436.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_56a4229d.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************
@@ -1357,14 +1357,6 @@ var Player = require('../ui/player');
 var AnalyserView = require('../3D/visualizer');
 
 var spec3D = {
-  attached: function() {
-    console.log('spectrogram-3d attached');
-    spec3D.onResize_();
-    spec3D.init_();
-
-    window.addEventListener('resize', spec3D.onResize_.bind(spec3D));
-  },
-
   stop: function() {
     spec3D.player.stop();
   },
@@ -1394,10 +1386,13 @@ var spec3D = {
     spec3D.player.live();
   },
 
-  init_: function() {
+  init: function(canvas) {
     // Initialize everything.
     var player = new Player();
     var analyserNode = player.getAnalyserNode();
+
+    spec3D.canvas = canvas;
+    spec3D.onResize_();
 
     var analyserView = new AnalyserView(this.canvas);
     analyserView.setAnalyserNode(analyserNode);
@@ -1405,16 +1400,18 @@ var spec3D = {
 
     spec3D.player = player;
     spec3D.analyserView = analyserView;
+
+    window.addEventListener('resize', function () {
+      spec3D.onResize();
+    });
+
+    console.log('spectrogram-3d initialized');
   },
 
   onResize_: function() {
     console.log('onResize_');
-    var canvas = $('#spectrogram')[0];
-    spec3D.canvas = canvas;
-
-    // access sibling or parent elements here
-    canvas.width = $(window).width();
-    canvas.height = $(window).height();
+    this.canvas.width = $(window).width();
+    this.canvas.height = $(window).height();
   },
 
   draw_: function() {

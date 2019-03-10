@@ -68,7 +68,7 @@ $(function(){
 	var startup = function () {
 		getLocalization();
 
-		spec3D.attached();
+		spec3D.init($('#spectrogram')[0]);
 
 		$('#loadingSound').hide();
 

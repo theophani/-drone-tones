@@ -20,14 +20,6 @@ var Player = require('../ui/player');
 var AnalyserView = require('../3D/visualizer');
 
 var spec3D = {
-  attached: function() {
-    console.log('spectrogram-3d attached');
-    spec3D.onResize_();
-    spec3D.init_();
-
-    window.addEventListener('resize', spec3D.onResize_.bind(spec3D));
-  },
-
   stop: function() {
     spec3D.player.stop();
   },
@@ -57,10 +49,13 @@ var spec3D = {
     spec3D.player.live();
   },
 
-  init_: function() {
+  init: function(canvas) {
     // Initialize everything.
     var player = new Player();
     var analyserNode = player.getAnalyserNode();
+
+    spec3D.canvas = canvas;
+    spec3D.onResize_();
 
     var analyserView = new AnalyserView(this.canvas);
     analyserView.setAnalyserNode(analyserNode);
@@ -68,16 +63,18 @@ var spec3D = {
 
     spec3D.player = player;
     spec3D.analyserView = analyserView;
+
+    window.addEventListener('resize', function () {
+      spec3D.onResize();
+    });
+
+    console.log('spectrogram-3d initialized');
   },
 
   onResize_: function() {
     console.log('onResize_');
-    var canvas = $('#spectrogram')[0];
-    spec3D.canvas = canvas;
-
-    // access sibling or parent elements here
-    canvas.width = $(window).width();
-    canvas.height = $(window).height();
+    this.canvas.width = $(window).width();
+    this.canvas.height = $(window).height();
   },
 
   draw_: function() {
