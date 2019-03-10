@@ -71,8 +71,6 @@ $(function(){
 		getLocalization();
 
 		spec3D.attached();
-		// --------------------------------------------
-		$('.music-box__tool-tip').hide(0);
 		$('#loadingSound').hide(0);
 
 		$('.music-box__buttons__button').click(function(e){
