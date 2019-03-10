@@ -137,10 +137,6 @@ Player.prototype.createSource_ = function(buffer, loop) {
 	return source;
 };
 
-Player.prototype.setMicrophoneInput = function() {
-	// TODO: Implement me!
-};
-
 Player.prototype.stop = function() {
 	if (this.source) {
 		this.source.stop(0);
@@ -160,23 +156,7 @@ Player.prototype.getAnalyserNode = function() {
 	return this.analyser;
 };
 
-Player.prototype.setBandpassFrequency = function(freq) {
-	if (freq == null) {
-		console.log('Removing bandpass filter');
-		// Remove the effect of the bandpass filter completely, connecting the mix to the analyser directly.
-		this.mix.disconnect();
-		this.mix.connect(this.analyser);
-	} else {
-		// console.log('Setting bandpass frequency to %d Hz', freq);
-		// Only set the frequency if it's specified, otherwise use the old one.
-		this.bandpass.frequency.value = freq;
-		this.mix.disconnect();
-		this.mix.connect(this.bandpass);
-		// bandpass is connected to filterGain.
-		this.filterGain.connect(this.analyser);
-	}
-};
-
+// These aren’t used anymore, but I am going to keep them for reference
 Player.prototype.playTone = function(freq) {
 	if (!this.osc) {
 		this.osc = this.context.createOscillator();
@@ -186,8 +166,6 @@ Player.prototype.playTone = function(freq) {
 	}
 	this.osc.frequency.value = freq;
 	this.filterGain.gain.value = .2;
-
-
 };
 
 Player.prototype.stopTone = function() {
