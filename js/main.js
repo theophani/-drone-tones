@@ -64,7 +64,7 @@ $(function(){
 		});
 	};
 
-	var startup = function (){
+	var startup = function () {
         var source = null; // global source for user dropped audio
 
 		getLocalization();
@@ -212,16 +212,16 @@ $(function(){
         fileDrop();
 	};
 
-	var elm = $('#iosButton');
-	if(!window.isIOS){
-		elm.addClass('hide');
-		startup();
-    console.log(2);
-	}else{
+	var iosOverlay = $('#iosButton');
+
+	if (window.isIOS) {
 		window.parent.postMessage('loaded','*');
-		elm[0].addEventListener('touchend', function(e){
-			elm.addClass('hide');
+		iosOverlay[0].addEventListener('touchend', function (e) {
+			iosOverlay.addClass('hide');
 			startup();
-		},false);
+		}, false);
+	} else {
+		iosOverlay.addClass('hide');
+		startup();
 	}
 });

@@ -1059,7 +1059,7 @@ $(function(){
 		});
 	};
 
-	var startup = function (){
+	var startup = function () {
         var source = null; // global source for user dropped audio
 
 		getLocalization();
@@ -1207,21 +1207,21 @@ $(function(){
         fileDrop();
 	};
 
-	var elm = $('#iosButton');
-	if(!window.isIOS){
-		elm.addClass('hide');
-		startup();
-    console.log(2);
-	}else{
+	var iosOverlay = $('#iosButton');
+
+	if (window.isIOS) {
 		window.parent.postMessage('loaded','*');
-		elm[0].addEventListener('touchend', function(e){
-			elm.addClass('hide');
+		iosOverlay[0].addEventListener('touchend', function (e) {
+			iosOverlay.addClass('hide');
 			startup();
-		},false);
+		}, false);
+	} else {
+		iosOverlay.addClass('hide');
+		startup();
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_6af25eff.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_6a7450bc.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************
