@@ -51,18 +51,14 @@ var spec3D = {
 
   init: function(canvas) {
     // Initialize everything.
-    var player = new Player();
-    var analyserNode = player.getAnalyserNode();
-
+    this.player = new Player();
+    this.analyserNode = this.player.getAnalyserNode();
     this.canvas = canvas;
     this.onResize_();
 
-    var analyserView = new AnalyserView(this.canvas);
-    analyserView.setAnalyserNode(analyserNode);
-    analyserView.initByteBuffer();
-
-    this.player = player;
-    this.analyserView = analyserView;
+    this.analyserView = new AnalyserView(this.canvas);
+    this.analyserView.setAnalyserNode(this.analyserNode);
+    this.analyserView.initByteBuffer();
 
     window.addEventListener('resize', this.onResize_.bind(this));
 
