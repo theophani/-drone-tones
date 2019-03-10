@@ -1067,18 +1067,17 @@ $(function(){
 
 		getLocalization();
 
-		var sp = spec3D;
-		sp.attached();
+		spec3D.attached();
 		// --------------------------------------------
 		$('.music-box__tool-tip').hide(0);
 		$('#loadingSound').hide(0);
 
 		$('.music-box__buttons__button').click(function(e){
-			sp.startRender();
+			spec3D.startRender();
 
-			var wasPlaying = sp.isPlaying();
-			sp.stop();
-			sp.drawingMode = false;
+			var wasPlaying = spec3D.isPlaying();
+			spec3D.stop();
+			spec3D.drawingMode = false;
 
 			if($(this).hasClass('selected')) {
 				$('.music-box__buttons__button').removeClass('selected');
@@ -1096,26 +1095,26 @@ $(function(){
 						// Show Record Modal Screen *******************************
 						$('#record').fadeIn().delay(2000).fadeOut();
 						// Start Recording ****************************************
-						sp.live();
+						spec3D.live();
 					}
 				// Check for Start drawing data instruction  **********************
 				}else if ($(this).attr('data-draw') !== undefined) {
-					sp.drawingMode = true;
+					spec3D.drawingMode = true;
 					$('#drawAnywhere').fadeIn().delay(2000).fadeOut();
 				// Check for play audio data instruction **************************
 				}else if ($(this).attr('data-src') !== undefined) {
-					sp.loopChanged( true );
+					spec3D.loopChanged( true );
 					$('#loadingMessage').text($(this).attr('data-name'));
-					sp.play($(this).attr('data-src'));
+					spec3D.play($(this).attr('data-src'));
 				}
 			}
 		})
 
 		var killSound = function(){
-			sp.startRender();
-			var wasPlaying = sp.isPlaying();
-			sp.stop();
-			sp.drawingMode = false;
+			spec3D.startRender();
+			var wasPlaying = spec3D.isPlaying();
+			spec3D.stop();
+			spec3D.drawingMode = false;
 			$('.music-box__buttons__button').removeClass('selected');
 		}
 
@@ -1146,9 +1145,9 @@ $(function(){
                     source.connect(context.destination);
 
                     // Visualizer
-                    sp.startRender();
-                    sp.loopChanged( true );
-                    sp.userAudio(source);
+                    spec3D.startRender();
+                    spec3D.loopChanged( true );
+                    spec3D.userAudio(source);
                     $('#loadingSound').delay(500).fadeOut().hide(0);
                 }, function(e) {
                     console.log('Error decoding file', e);
@@ -1172,7 +1171,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_ecfdad74.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_cb9fef81.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************
