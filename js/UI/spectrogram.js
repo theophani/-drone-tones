@@ -15,6 +15,7 @@ limitations under the License.
 *********************************************************/
 
 'use strict'
+
 var Util = require('../util/util.js');
 var Player = require('../ui/player');
 var AnalyserView = require('../3D/visualizer');
@@ -98,59 +99,6 @@ var spec3D = {
 
     spec3D.analyserView.doFrequencyAnalysis();
     requestAnimationFrame(spec3D.draw_.bind(spec3D));
-  },
-
-  /**
-   * Convert between frequency and the offset on the canvas (in screen space).
-   * For now, we fudge this...
-   *
-   * TODO(smus): Make this work properly with WebGL.
-   */
-  freqStart: 20,
-  freqEnd: 20000,
-  padding: 30,
-  yToFreq: function(y) {
-    var padding = spec3D.padding;
-    var height = $('#spectrogram').height();
-
-    if (height < 2*padding || // The spectrogram isn't tall enough
-        y < padding || // Y is out of bounds on top.
-        y > height - padding) { // Y is out of bounds on the bottom.
-      return null;
-    }
-    var percentFromBottom = 1 - (y - padding) / (height - padding);
-    var freq = spec3D.freqStart + (spec3D.freqEnd - spec3D.freqStart)* percentFromBottom;
-    return Util.lin2log(freq);
-  },
-
-  // Just an inverse of yToFreq.
-  freqToY: function(logFreq) {
-    // Go from logarithmic frequency to linear.
-    var freq = Util.log2lin(logFreq);
-    var height = $('#spectrogram').height();
-    var padding = spec3D.padding;
-    // Get the frequency percentage.
-    var percent = (freq - spec3D.freqStart) / (spec3D.freqEnd - spec3D.freqStart);
-    // Apply padding, etc.
-    return spec3D.padding + percent * (height - 2*padding);
-  },
-  easeInOutCubic: function (t, b, c, d) {
-    if ((t/=d/2) < 1) return c/2*t*t*t + b;
-    return c/2*((t-=2)*t*t + 2) + b;
-  },
-  easeInOutQuad: function (t, b, c, d) {
-    if ((t/=d/2) < 1) return c/2*t*t + b;
-    return -c/2 * ((--t)*(t-2) - 1) + b;
-  },
-  easeInOutQuint: function (t, b, c, d) {
-    if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
-    return c/2*((t-=2)*t*t*t*t + 2) + b;
-  },
-  easeInOutExpo: function (t, b, c, d) {
-    if (t==0) return b;
-    if (t==d) return b+c;
-    if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
-    return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
   }
 };
 
