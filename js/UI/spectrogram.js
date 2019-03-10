@@ -65,7 +65,7 @@ var spec3D = {
     this.analyserView = analyserView;
 
     window.addEventListener('resize', function () {
-      spec3D.onResize();
+      spec3D.onResize_();
     });
 
     console.log('spectrogram-3d initialized');
