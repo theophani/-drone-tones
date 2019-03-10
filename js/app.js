@@ -1132,7 +1132,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_6f9b645e.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_2188b89a.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************
@@ -1506,13 +1506,6 @@ var spec3D = {
     // access sibling or parent elements here
     canvas.width = $(window).width();
     canvas.height = $(window).height();
-
-    // Also size the legend canvas.
-    var legend = $('#legend')[0];
-    legend.width = $(window).width();
-    legend.height = $(window).height() - 158;
-
-    spec3D.drawLegend_();
   },
 
   draw_: function() {
@@ -1523,25 +1516,6 @@ var spec3D = {
 
     spec3D.analyserView.doFrequencyAnalysis();
     requestAnimationFrame(spec3D.draw_.bind(spec3D));
-  },
-
-  drawLegend_: function() {
-    // Draw a simple legend.
-    var canvas = $('#legend')[0];
-    var ctx = canvas.getContext('2d');
-    var x = canvas.width - 10;
-
-
-
-    ctx.fillStyle = '#FFFFFF';
-    ctx.font = '14px Roboto';
-    ctx.textAlign = 'right';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('20,000 Hz -', x, canvas.height - spec3D.freqToY(20000));
-    ctx.fillText('2,000 Hz -', x, canvas.height - spec3D.freqToY(2000));
-    ctx.fillText('200 Hz -', x, canvas.height - spec3D.freqToY(200));
-    ctx.fillText('20 Hz -', x, canvas.height - spec3D.freqToY(20));
-
   },
 
   /**
