@@ -1157,56 +1157,6 @@ $(function(){
 
             fileReader.readAsArrayBuffer(file);
         };
-
-        var fileDrop = function() {
-            var $fileDrop = $('#fileDrop');
-            var $description = $('.file-overlay-description');
-
-            $(window).on({'dragover': function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-
-                $description.text('Drop your sound file here.');
-                $fileDrop.addClass('active');
-            }, 'dragleave': function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-
-                $fileDrop.removeClass('active');
-            }, 'drop': function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-
-                $fileDrop.addClass('pointer-events');
-
-                // Stop other sounds
-                killSound();
-
-                var droppedFiles = e.originalEvent.dataTransfer;
-                if (droppedFiles && droppedFiles.files.length && droppedFiles.items[0] && droppedFiles.items[0].type !== 'audio/midi') {
-                    $.each(droppedFiles.files, function(i, file) {
-                        if (file.type.indexOf('audio') > -1) {
-                            $('#loadingMessage').text(file.name);
-                            $('#loadingSound').show(0);
-                            decodeBuffer(file);
-                            $fileDrop.removeClass('active');
-                            $fileDrop.removeClass('pointer-events');
-                        } else {
-                            $description.text('Only sound files will work here.');
-						}
-                    });
-                } else {
-                    $description.text('Only sound files will work here.');
-				}
-            } });
-
-            $fileDrop.on('click', function() {
-                $fileDrop.removeClass('active');
-                $fileDrop.removeClass('pointer-events');
-			});
-        };
-
-        fileDrop();
 	};
 
 	var iosOverlay = $('#iosButton');
@@ -1222,7 +1172,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_7e4ff329.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_f803fd4b.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************

@@ -162,56 +162,6 @@ $(function(){
 
             fileReader.readAsArrayBuffer(file);
         };
-
-        var fileDrop = function() {
-            var $fileDrop = $('#fileDrop');
-            var $description = $('.file-overlay-description');
-
-            $(window).on({'dragover': function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-
-                $description.text('Drop your sound file here.');
-                $fileDrop.addClass('active');
-            }, 'dragleave': function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-
-                $fileDrop.removeClass('active');
-            }, 'drop': function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-
-                $fileDrop.addClass('pointer-events');
-
-                // Stop other sounds
-                killSound();
-
-                var droppedFiles = e.originalEvent.dataTransfer;
-                if (droppedFiles && droppedFiles.files.length && droppedFiles.items[0] && droppedFiles.items[0].type !== 'audio/midi') {
-                    $.each(droppedFiles.files, function(i, file) {
-                        if (file.type.indexOf('audio') > -1) {
-                            $('#loadingMessage').text(file.name);
-                            $('#loadingSound').show(0);
-                            decodeBuffer(file);
-                            $fileDrop.removeClass('active');
-                            $fileDrop.removeClass('pointer-events');
-                        } else {
-                            $description.text('Only sound files will work here.');
-						}
-                    });
-                } else {
-                    $description.text('Only sound files will work here.');
-				}
-            } });
-
-            $fileDrop.on('click', function() {
-                $fileDrop.removeClass('active');
-                $fileDrop.removeClass('pointer-events');
-			});
-        };
-
-        fileDrop();
 	};
 
 	var iosOverlay = $('#iosButton');
