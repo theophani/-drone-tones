@@ -167,12 +167,12 @@ $(function(){
 	var iosOverlay = $('#iosButton');
 
 	if (window.isIOS) {
+		iosOverlay.removeClass('hide');
 		iosOverlay[0].addEventListener('touchend', function (e) {
 			iosOverlay.addClass('hide');
 			startup();
 		}, false);
 	} else {
-		iosOverlay.addClass('hide');
 		startup();
 	}
 });
