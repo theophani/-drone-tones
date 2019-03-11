@@ -1130,7 +1130,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_eca9e45e.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_f5b03e16.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************
@@ -1180,6 +1180,10 @@ function Player() {
 	this.buffers = {};
 
 	// Connect an empty source node to the mix.
+	// Note from Tiffany: I don’t know what this is for.
+	// I thought maybe it primes the context, to get around
+	// the rules about playback, but I tested without this,
+	// and nothing broke ... I’m leaving it for now anyway.
 	Util.loadTrackSrc(this.context, 'bin/snd/empty.mp3', function(buffer) {
 		var source = this.createSource_(buffer, true);
 		source.loop = true;
@@ -1219,7 +1223,7 @@ Player.prototype.playHelper_ = function(src) {
 	if (!this.loop) {
 		this.playTimer = setTimeout(function() {
 			this.stop();
-	}.bind(this), buffer.duration * 2000);
+		}.bind(this), buffer.duration * 2000);
 	}
 };
 

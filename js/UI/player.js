@@ -88,7 +88,7 @@ Player.prototype.playHelper_ = function(src) {
 	if (!this.loop) {
 		this.playTimer = setTimeout(function() {
 			this.stop();
-	}.bind(this), buffer.duration * 2000);
+		}.bind(this), buffer.duration * 2000);
 	}
 };
 
