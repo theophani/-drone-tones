@@ -1130,7 +1130,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_63428915.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_fa9e2b2c.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************
@@ -1163,11 +1163,7 @@ function Player() {
 	// Create a mix.
 	var mix = context.createGain();
 
-	// Create a bandpass filter.
-	var bandpass = context.createBiquadFilter();
-	bandpass.Q.value = 10;
-	bandpass.type = 'bandpass';
-
+	// Create a gain filter
 	var filterGain = context.createGain();
 	filterGain.gain.value = 1;
 
@@ -1178,7 +1174,6 @@ function Player() {
 
 	this.context = context;
 	this.mix = mix;
-	// this.bandpass = bandpass;
 	this.filterGain = filterGain;
 	this.analyser = analyser;
 

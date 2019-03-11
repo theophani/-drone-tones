@@ -28,11 +28,7 @@ function Player() {
 	// Create a mix.
 	var mix = context.createGain();
 
-	// Create a bandpass filter.
-	var bandpass = context.createBiquadFilter();
-	bandpass.Q.value = 10;
-	bandpass.type = 'bandpass';
-
+	// Create a gain filter
 	var filterGain = context.createGain();
 	filterGain.gain.value = 1;
 
@@ -43,7 +39,6 @@ function Player() {
 
 	this.context = context;
 	this.mix = mix;
-	// this.bandpass = bandpass;
 	this.filterGain = filterGain;
 	this.analyser = analyser;
 
