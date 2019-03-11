@@ -1133,7 +1133,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_7d67ae8d.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_79d7b236.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************
@@ -1194,15 +1194,19 @@ function Player() {
 	}.bind(this));
 }
 
-Player.prototype.playSrc = function(src) {
-	// Stop all of the mic stuff.
-	this.filterGain.gain.value = 1;
-
+Player.prototype.disconnectMic = function() {
 	if (this.input) {
 		this.input.disconnect();
 		this.input = null;
 		return;
 	}
+};
+
+Player.prototype.playSrc = function(src) {
+	// Stop all of the mic stuff.
+	this.filterGain.gain.value = 1;
+
+	this.disconnectMic();
 
 	if (this.buffers[src]) {
 		$('#loadingSound').fadeIn(100).delay(1000).fadeOut(500);
@@ -1234,11 +1238,7 @@ Player.prototype.live = function() {
 	if (window.isIOS && false) {
 		console.log("cant use mic on ios");
 	} else {
-		if (this.input) {
-			this.input.disconnect();
-			this.input = null;
-			return;
-		}
+		this.disconnectMic();
 
 		var self = this;
 
@@ -1284,11 +1284,7 @@ Player.prototype.stop = function() {
 		this.playTimer = null;
 	}
 
-	if (this.input) {
-		this.input.disconnect();
-		this.input = null;
-		return;
-	}
+	this.disconnectMic();
 };
 
 Player.prototype.getAnalyserNode = function() {

@@ -56,15 +56,19 @@ function Player() {
 	}.bind(this));
 }
 
-Player.prototype.playSrc = function(src) {
-	// Stop all of the mic stuff.
-	this.filterGain.gain.value = 1;
-
+Player.prototype.disconnectMic = function() {
 	if (this.input) {
 		this.input.disconnect();
 		this.input = null;
 		return;
 	}
+};
+
+Player.prototype.playSrc = function(src) {
+	// Stop all of the mic stuff.
+	this.filterGain.gain.value = 1;
+
+	this.disconnectMic();
 
 	if (this.buffers[src]) {
 		$('#loadingSound').fadeIn(100).delay(1000).fadeOut(500);
@@ -96,11 +100,7 @@ Player.prototype.live = function() {
 	if (window.isIOS && false) {
 		console.log("cant use mic on ios");
 	} else {
-		if (this.input) {
-			this.input.disconnect();
-			this.input = null;
-			return;
-		}
+		this.disconnectMic();
 
 		var self = this;
 
@@ -146,11 +146,7 @@ Player.prototype.stop = function() {
 		this.playTimer = null;
 	}
 
-	if (this.input) {
-		this.input.disconnect();
-		this.input = null;
-		return;
-	}
+	this.disconnectMic();
 };
 
 Player.prototype.getAnalyserNode = function() {
