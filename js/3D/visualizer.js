@@ -61,7 +61,7 @@ function create3DDebugContext(context) {
  * Class AnalyserView
  */
 
-AnalyserView = function(canvas) {
+function AnalyserView(canvas) {
 	// NOTE: the default value of this needs to match the selected radio button
 
 	// This analysis type may be overriden later on if we discover we don't support the right shader features.
@@ -70,7 +70,7 @@ AnalyserView = function(canvas) {
 	this.sonogram3DWidth = 256;
 	this.sonogram3DHeight = 256;
 	this.sonogram3DGeometrySize = 9.5;
-	
+
 	this.freqByteData = 0;
 	this.texture = 0;
 	this.TEXTURE_HEIGHT = 256;
