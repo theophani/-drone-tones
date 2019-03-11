@@ -92,7 +92,7 @@ $(function(){
 
 				// Check for start recoding data instruction **********************
 				if ($(this).attr('data-mic') !== undefined) {
-					if (window.isIOS){
+					if (window.isIOS && false){
 						// Throw Microphone Error *********************************
 						iosOverlay.removeClass('hide').html(localizedStrings.Error_Message_2.message);
 						// Remove Selection ***************************************

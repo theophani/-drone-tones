@@ -1087,7 +1087,7 @@ $(function(){
 
 				// Check for start recoding data instruction **********************
 				if ($(this).attr('data-mic') !== undefined) {
-					if (window.isIOS){
+					if (window.isIOS && false){
 						// Throw Microphone Error *********************************
 						iosOverlay.removeClass('hide').html(localizedStrings.Error_Message_2.message);
 						// Remove Selection ***************************************
@@ -1130,7 +1130,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_f5b03e16.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_6206798c.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************
@@ -1228,7 +1228,7 @@ Player.prototype.playHelper_ = function(src) {
 };
 
 Player.prototype.live = function() {
-	if (window.isIOS) {
+	if (window.isIOS && false) {
 		console.log("cant use mic on ios");
 	} else {
 		if (this.input) {
@@ -1257,7 +1257,8 @@ Player.prototype.onStream_ = function(stream) {
 };
 
 Player.prototype.onStreamError_ = function(e) {
-	// TODO: Error handling.
+	console.log('onStreamError_');
+	console.log(e);
 };
 
 Player.prototype.setLoop = function(loop) {

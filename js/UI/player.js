@@ -93,7 +93,7 @@ Player.prototype.playHelper_ = function(src) {
 };
 
 Player.prototype.live = function() {
-	if (window.isIOS) {
+	if (window.isIOS && false) {
 		console.log("cant use mic on ios");
 	} else {
 		if (this.input) {
@@ -122,7 +122,8 @@ Player.prototype.onStream_ = function(stream) {
 };
 
 Player.prototype.onStreamError_ = function(e) {
-	// TODO: Error handling.
+	console.log('onStreamError_');
+	console.log(e);
 };
 
 Player.prototype.setLoop = function(loop) {
