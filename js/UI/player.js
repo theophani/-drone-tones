@@ -45,6 +45,10 @@ function Player() {
 	this.buffers = {};
 
 	// Connect an empty source node to the mix.
+	// Note from Tiffany: I don’t know what this is for.
+	// I thought maybe it primes the context, to get around
+	// the rules about playback, but I tested without this,
+	// and nothing broke ... I’m leaving it for now anyway.
 	Util.loadTrackSrc(this.context, 'bin/snd/empty.mp3', function(buffer) {
 		var source = this.createSource_(buffer, true);
 		source.loop = true;
