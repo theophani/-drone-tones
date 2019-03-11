@@ -1097,6 +1097,7 @@ $(function(){
 						$('#record').fadeIn().delay(2000).fadeOut();
 						// Start Recording ****************************************
 						spec3D.live();
+						captureAudio();
 					}
 
 				// Check for play audio data instruction **************************
@@ -1107,6 +1108,29 @@ $(function(){
 				}
 			}
 		})
+
+	function captureAudio() {
+		var beatsPerMinute = 60;
+		var samplesPerBeat = 16;
+		var beatsToCapture = 5;
+		var samples = samplesPerBeat * beatsToCapture;
+		var msBetweenSamples = beatsPerMinute / 60 / samplesPerBeat * 1000;
+		var analyser = spec3D.analyserView.analyser;
+		var dataArraySize = analyser.frequencyBinCount;
+
+		window.captured = [];
+
+		setInterval(function () {
+			if (samples > 0) {
+				console.log(samples)
+				var freqByteData = new Uint8Array(dataArraySize);
+				analyser.getByteFrequencyData(freqByteData);
+				window.captured.push(freqByteData);
+			}
+			samples--;
+
+		}, msBetweenSamples);
+	}
 
 // I commented this out because I think it causes a bug
 // where the mic is marked as unselected after approving the mic
@@ -1133,7 +1157,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_e6676fa3.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_ebf2c015.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************

@@ -102,6 +102,7 @@ $(function(){
 						$('#record').fadeIn().delay(2000).fadeOut();
 						// Start Recording ****************************************
 						spec3D.live();
+						captureAudio();
 					}
 
 				// Check for play audio data instruction **************************
@@ -112,6 +113,29 @@ $(function(){
 				}
 			}
 		})
+
+	function captureAudio() {
+		var beatsPerMinute = 60;
+		var samplesPerBeat = 16;
+		var beatsToCapture = 5;
+		var samples = samplesPerBeat * beatsToCapture;
+		var msBetweenSamples = beatsPerMinute / 60 / samplesPerBeat * 1000;
+		var analyser = spec3D.analyserView.analyser;
+		var dataArraySize = analyser.frequencyBinCount;
+
+		window.captured = [];
+
+		setInterval(function () {
+			if (samples > 0) {
+				console.log(samples)
+				var freqByteData = new Uint8Array(dataArraySize);
+				analyser.getByteFrequencyData(freqByteData);
+				window.captured.push(freqByteData);
+			}
+			samples--;
+
+		}, msBetweenSamples);
+	}
 
 // I commented this out because I think it causes a bug
 // where the mic is marked as unselected after approving the mic
