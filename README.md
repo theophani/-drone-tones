@@ -16,3 +16,26 @@ You might be able use `gulp` instead of `node_modules/.bin/gulp`, but you’ll h
 * `node_modules/.bin/gulp watch build-all` to manually rebuild app.js and bundle.js
 * `node_modules/.bin/gulp watch browserify` to manually rebuild _just_ app.js
 * `node_modules/.bin/gulp watch bundle-libs` to manually rebuild _just_ bundle.js
+
+## Getting data about the audio
+
+I have learned that the `freqByteData` property of the `spec3D.analyserView`
+returns “frequency byte data” (whatever this is ...) as a 1024 item array,
+which changes at any moment in time when you ask for the data.
+
+So, more directly, at any moment of time, if you want a array representing
+the “frequency byte data” of the audio, anywhere in main.js, call:
+
+```javascript
+spec3D.analyserView.freqByteData
+```
+
+### How much data do we need to represent 30 seconds of audio?
+
+Let’s assume we want an array of data representing 30 seconds of audio.
+
+Let's say we target a beat of 60 beats per minute,
+and we want to have audio data to the 16th note,
+then we would want a sample every 62.5 ms:
+
+60 beats/minute / 60 seconds/minute / 16 samples/beat = 0.0625 seconds/sample
