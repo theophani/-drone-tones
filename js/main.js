@@ -113,9 +113,12 @@ $(function(){
 			}
 		})
 
-		window.addEventListener('blur', function () {
-			killSound();
-		});
+// I commented this out because I think it causes a bug
+// where the mic is marked as unselected after approving the mic
+// and I can’t think of when it is actually desired
+//		window.addEventListener('blur', function () {
+//			killSound();
+//		});
 
 		document.addEventListener('visibilitychange', function () {
 			killSound();

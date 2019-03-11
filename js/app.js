@@ -1108,9 +1108,12 @@ $(function(){
 			}
 		})
 
-		window.addEventListener('blur', function () {
-			killSound();
-		});
+// I commented this out because I think it causes a bug
+// where the mic is marked as unselected after approving the mic
+// and I can’t think of when it is actually desired
+//		window.addEventListener('blur', function () {
+//			killSound();
+//		});
 
 		document.addEventListener('visibilitychange', function () {
 			killSound();
@@ -1130,7 +1133,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_6206798c.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_7d67ae8d.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************
