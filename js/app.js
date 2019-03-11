@@ -1130,7 +1130,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_e741142.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_63428915.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************
@@ -1190,12 +1190,12 @@ function Player() {
 		source.loop = true;
 		source.start(0);
 	}.bind(this));
-
 }
 
 Player.prototype.playSrc = function(src) {
 	// Stop all of the mic stuff.
 	this.filterGain.gain.value = 1;
+
 	if (this.input) {
 		this.input.disconnect();
 		this.input = null;
@@ -1229,9 +1229,9 @@ Player.prototype.playHelper_ = function(src) {
 };
 
 Player.prototype.live = function() {
-	if(window.isIOS){
+	if (window.isIOS) {
 		console.log("cant use mic on ios");
-	}else{
+	} else {
 		if (this.input) {
 			this.input.disconnect();
 			this.input = null;
@@ -1239,10 +1239,11 @@ Player.prototype.live = function() {
 		}
 
 		var self = this;
-    navigator.mediaDevices.getUserMedia({audio: true}).then(function(stream) {
-      self.onStream_(stream);
-		}).catch(function() {
-      self.onStreamError(this);
+
+		navigator.mediaDevices.getUserMedia({audio: true}).then(function(stream) {
+			self.onStream_(stream);
+		}).catch(function(e) {
+			self.onStreamError_(e);
 		});
 
 		this.filterGain.gain.value = 0;
@@ -1278,8 +1279,8 @@ Player.prototype.stop = function() {
 		this.source = null;
 		clearTimeout(this.playTimer);
 		this.playTimer = null;
-
 	}
+
 	if (this.input) {
 		this.input.disconnect();
 		this.input = null;
@@ -1381,7 +1382,7 @@ var spec3D = {
   },
 
   resize_: function() {
-    console.log('onResize_');
+    console.log('resize_');
     this.canvas.width = $(window).width();
     this.canvas.height = $(window).height();
   },

@@ -66,7 +66,7 @@ var spec3D = {
   },
 
   resize_: function() {
-    console.log('onResize_');
+    console.log('resize_');
     this.canvas.width = $(window).width();
     this.canvas.height = $(window).height();
   },
