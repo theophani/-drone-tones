@@ -1130,7 +1130,7 @@ $(function(){
 	}
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_fa9e2b2c.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_eca9e45e.js","/")
 },{"./ui/spectrogram":6,"1YiZ5S":11,"buffer":8}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /********************************************************
@@ -1154,7 +1154,7 @@ var Util = require('../util/util.js');
 function Player() {
 	// Create an audio graph.
 	window.AudioContext = window.AudioContext || window.webkitAudioContext;
-	context = new AudioContext();
+	context = new AudioContext(); // this is global
 
 	var analyser = context.createAnalyser();
 	analyser.fftSize = (window.isMobile)?1024 : 2048;

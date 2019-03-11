@@ -19,7 +19,7 @@ var Util = require('../util/util.js');
 function Player() {
 	// Create an audio graph.
 	window.AudioContext = window.AudioContext || window.webkitAudioContext;
-	context = new AudioContext();
+	context = new AudioContext(); // this is global
 
 	var analyser = context.createAnalyser();
 	analyser.fftSize = (window.isMobile)?1024 : 2048;
